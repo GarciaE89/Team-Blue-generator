@@ -29,13 +29,13 @@ test('test this.name in Employee', () => {
     expect(employee.getId()).toEqual(expect.any(Number));
   });
   
-  //test getEmail()
+  
   test('test this.email in Employee', () => {
     const employee = new Employee('Jessie', 25, 'Jessie@teamrocket.com');
     expect(employee.getEmail()).toEqual(expect.any(String));
   });
   
-  //test getRole()
+  
   test('test the role in Employee', () => {
     const employee = new Employee('Jessie', 25, 'Jessie@teamrocket.com');
     expect(employee.getRole()).toBe('Employee');
