@@ -158,3 +158,32 @@ const newEmployee = async () => {
 
     
 // Add a new employee function, that will stop after you select no and will render the html file 
+const addEmployee = async (array) => {
+    await inquirer
+    .prompt({
+        type:"confirm",
+        name:"addEmployee",
+        message:"Add an employee? (Required)",
+    }).then(async(response) => {
+        var createEmployee = response.addEmployee;
+        if (await createEmployee === true) {
+            newEmployee();
+        }
+
+        else if (await createEmployee === false) {
+            if (!fs.existsSync(fileDirectory)) {
+                fs.mkdirSync(fileDirectory)
+            }
+            fs.writeFile(filePath, renderHTML(array), (err) => {
+                if(err) {
+                    return console.log(err);
+                }
+                console.log("index.html file has been created in dist folder ");
+            });
+        }
+
+    })
+};
+
+// function call 
+init();
