@@ -32,9 +32,10 @@ const questions = [
         message: "what is the employee email?"
     },
     {
-        type: "input",
+        type: "list",
         name: "role",
-        message: "what is the employee's role?"
+        message: "what is the employee's role?",
+        choices:["Manager","Engineer", "Intern" ]
     },
 
 ]
@@ -171,8 +172,8 @@ const addEmployee = async (array) => {
         }
 
         else if (await createEmployee === false) {
-            if (!fs.existsSync(fileDirectory)) {
-                fs.mkdirSync(fileDirectory)
+            if (!fs.existsSync(fileDir)) {
+                fs.mkdirSync(fileDir)
             }
             fs.writeFile(filePath, renderHTML(array), (err) => {
                 if(err) {
